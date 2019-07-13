@@ -1,2 +1,1 @@
-guess=$(cat Cargo.toml | grep "^name")
-echo $guess
+cargo clean -p $(cargo pkgid)
