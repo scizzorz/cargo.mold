@@ -1,0 +1,30 @@
+includes:
+- url: "https://github.com/philipdexter/std.mold"
+
+recipes:
+  build:
+    command: ["cargo", "build"]
+    help: "Build using cargo"
+  check:
+    command: ["cargo", "check"]
+    help: "Check for errors using cargo"
+  clean:
+    command: ["cargo", "clean"]
+    help: "Clean build artifacts"
+  clean-self:
+    help: "Only clean current package"
+    type: "sh"
+  fmt:
+    command: ["cargo", "fmt"]
+    help: "Format using rustfmt"
+  install:
+    command: ["cargo", "install", "--force", "--path", "."]
+    help: "Install the current project using cargo"
+  lint:
+    command: ["cargo", "clippy", "--", "-D", "warnings"]
+    deps:
+    - clean-self
+    help: "Lint using clippy"
+  test:
+    command: ["cargo", "test"]
+    help: "Run tests using cargo"
