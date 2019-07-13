@@ -3,28 +3,30 @@ includes:
 
 recipes:
   build:
-    command: ["cargo", "build"]
     help: "Build using cargo"
+    command: ["cargo", "build"]
   check:
-    command: ["cargo", "check"]
     help: "Check for errors using cargo"
+    command: ["cargo", "check"]
+    deps:
+    - clean-self
   clean:
-    command: ["cargo", "clean"]
     help: "Clean build artifacts"
+    command: ["cargo", "clean"]
   clean-self:
     help: "Only clean current package"
     type: "sh"
   fmt:
-    command: ["cargo", "fmt"]
     help: "Format using rustfmt"
+    command: ["cargo", "fmt"]
   install:
-    command: ["cargo", "install", "--force", "--path", "."]
     help: "Install the current project using cargo"
+    command: ["cargo", "install", "--force", "--path", "."]
   lint:
+    help: "Lint using clippy"
     command: ["cargo", "clippy", "--", "-D", "warnings"]
     deps:
     - clean-self
-    help: "Lint using clippy"
   test:
-    command: ["cargo", "test"]
     help: "Run tests using cargo"
+    command: ["cargo", "test"]
