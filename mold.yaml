@@ -1,5 +1,7 @@
+version: "0.3.0"
+
 includes:
-- url: "https://github.com/philipdexter/std.mold"
+  - url: "https://github.com/philipdexter/std.mold"
 
 recipes:
   build:
@@ -16,6 +18,8 @@ recipes:
   clean-self:
     help: "Only clean current package"
     type: "sh"
+    script: |
+      cargo clean -p $(cargo pkgid)
   fmt:
     help: "Format using rustfmt"
     command: ["cargo", "fmt"]
