@@ -23,6 +23,9 @@ recipes:
   fmt:
     help: "Format using rustfmt"
     command: ["cargo", "fmt"]
+  fmtcheck:
+    help: "Check formatting using rustfmt"
+    command: ["cargo", "fmt", "--", "--check"]
   install:
     help: "Install the current project using cargo"
     command: ["cargo", "install", "--force", "--path", "."]
