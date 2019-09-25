@@ -16,13 +16,13 @@ recipes:
     help: "Only clean current package"
     runtime: "sh"
     script: |
+      cargo clean -p $(cargo pkgid)
 
   check:
     help: "Check for errors using cargo"
     command: ["cargo", "check"]
     deps:
     - "clean-self"
-      cargo clean -p $(cargo pkgid)
 
   lint:
     help: "Lint using clippy"
