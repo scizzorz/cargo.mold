@@ -2,6 +2,7 @@ version: "0.5"
 
 includes:
   - url: "github.com/xtfc/std.mold"
+    ref: "0.5"
 
 recipes:
   build:
