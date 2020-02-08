@@ -1,0 +1,48 @@
+version "0.6"
+
+recipe build {
+  help "Build using cargo"
+  $ "cargo build"
+}
+
+recipe clean {
+  help "Clean build artifacts"
+  $ "cargo clean"
+}
+
+recipe clean-self {
+  help "Only clean current package"
+  $ "sh $MOLD_SOURCE/clean-self.sh"
+}
+
+recipe check {
+  help "Check for errors using cargo"
+  require clean-self
+  $ "cargo check"
+}
+
+recipe lint {
+  help "Lint using clippy"
+  require clean-self
+  $ "cargo clippy -- -D warnings"
+}
+
+recipe fmt {
+  help "Format using rustfmt"
+  $ "cargo fmt"
+}
+
+recipe fmtcheck {
+  help "Check formatting using rustfmt"
+  $ "cargo fmt -- --check"
+}
+
+recipe install {
+  help "Install the current project using cargo"
+  $ "cargo install --force --path ."
+}
+
+recipe test {
+  help "Run tests using cargo"
+  $ "cargo test"
+}
